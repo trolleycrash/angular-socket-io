@@ -94,8 +94,13 @@ angular.module('btford.socket-io', []).
               });
               socket.on(eventName, forwardBroadcast);
             });
-          }
+          },
+          id:null
         };
+
+        socket.on('connect', function() {
+          wrappedSocket.id = socket.id;
+        });
 
         return wrappedSocket;
       };
